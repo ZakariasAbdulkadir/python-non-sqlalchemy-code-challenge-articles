@@ -10,6 +10,17 @@ class Article:
     @property
     def title(self):
         return self._title
+    
+    @title.setter
+    def title(self, value):
+        if hasattr(self, "_title"):
+            print("Attribute exists")
+        if not isinstance(value, str):
+            print("title must be a string.")
+        if 5 < len(value) < 50:
+            print("title must be between 5 and 50 chararcters long")
+        else:
+            self._title = value
 
     @property
     def author(self):
@@ -35,6 +46,17 @@ class Author:
     @property
     def name(self):
         return self._name
+
+    @name.setter
+    def name(self, value):
+        if hasattr(self, "_name"):
+            print("Attribute exists")
+        if not isinstance(value, str):
+            print("name must be a string.")
+        if len(value) < 0:
+            print("must be longer than 0")
+        else:
+            self._name = value
 
     def articles(self):
         return [article for article in Article.all if article.author == self]
